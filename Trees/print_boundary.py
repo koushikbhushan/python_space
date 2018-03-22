@@ -43,4 +43,4 @@ if __name__ == '__main__':
 	root.right.right = Node(25)
 	printLeftNodes(root)
 	printLeafNodes(root)
-	printRightNodes(root)
+	printRightNodes(root.right)
