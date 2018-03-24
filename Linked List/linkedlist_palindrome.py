@@ -13,21 +13,23 @@ class LinkedList:
 		node.next_node = self.head
 		self.head = node
 
-	
-	def is_palindrome_util(self, node):
+	left = Node(None)
+	def is_palindrome_util(self, right):
 		#left = 	self.head
-
-		if node is None:
+		global left
+		if right is None:
 			return True
 		
-		is_pal_ret = self.is_palindrome_util(node.next_node)
+		is_pal_ret = self.is_palindrome_util(right.next_node)
 		if is_pal_ret is False:
-			return False
-		is_pal =  node.data == self.head.data
-		self.head = self.head.next_node
+			return False	
+		is_pal =  right.data == left.data
+		left = left.next_node
 		return is_pal
 
 	def is_palindrome(self):
+		global left
+		left = self.head
 		return self.is_palindrome_util(self.head)
 	
 	def print(self):
