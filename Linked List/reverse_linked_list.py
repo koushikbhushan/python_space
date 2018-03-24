@@ -23,6 +23,20 @@ class LinkedList:
 			prev = curr
 			curr = next
 		self.head = prev
+	
+	def reverse_recursive_util(self, curr, prev):
+		if curr.next_node == None:
+			self.head = curr
+			curr.next_node = prev
+			return
+		
+		next = curr.next_node
+		curr.next_node = prev
+		self.reverse_recursive_util(next, curr)
+
+	def reverse_recursive(self):
+		self.reverse_recursive_util(self.head, None)
+				
 			
 	def print(self):
 		start = self.head
@@ -33,6 +47,7 @@ class LinkedList:
 
 if __name__ == '__main__':
 	elements = list(map(int, input('Enter elements for linked list:').split()))
+	print('********Iterative*********')
 	linked_list = LinkedList()
 	for i in elements:
 		linked_list.push(i)
@@ -40,5 +55,16 @@ if __name__ == '__main__':
 	print('Original list:' ,end=" ")
 	linked_list.print()
 	linked_list.reverse()	
+	print('Reverse list:' ,end=" ")
+	linked_list.print()
+
+	print('********Recursive*********')
+	linked_list = LinkedList()
+	for i in elements:
+		linked_list.push(i)
+
+	print('Original list:' ,end=" ")
+	linked_list.print()
+	linked_list.reverse_recursive()	
 	print('Reverse list:' ,end=" ")
 	linked_list.print()
