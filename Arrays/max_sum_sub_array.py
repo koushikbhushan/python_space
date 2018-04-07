@@ -9,4 +9,12 @@ for e in arr:
 	if sum_so_far > max_sum:
 		max_sum = sum_so_far
 
+print(max_sum)
+
+#Handle only negative nums
+sum_so_far = 0
+max_sum = 0
+for e in arr:
+	sum_so_far = max(e, sum_so_far+e)
+	max_sum = max(max_sum, sum_so_far)
 print(max_sum)		
